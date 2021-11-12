@@ -44,6 +44,9 @@ public class User implements Serializable {
     @Column(name = "isban")
     private boolean isBan;
 
+    @Column(name = "verify",nullable = false)
+    private boolean verify;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

@@ -62,6 +62,17 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <!--集成redis-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <version>2.5.6</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/com.codeborne/phantomjsdriver -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>

@@ -59,7 +59,7 @@ public class RegisterController extends BaseController{
 
     public boolean checkInvalid(String username,String password,String twice,String email,HttpServletResponse response) throws IOException {
         String userPattern = "^[a-zA-Z][a-zA-Z0-9_]{4,15}$";
-        String pwdPattern = "^[a-zA-Z]\\w{5,25}$";
+        String pwdPattern = "^(?![a-zA-z]+$)(?!\\d+$)(?![!@#$%^&*]+$)[a-zA-Z\\d!@#$%^&*]+$";
         String emailPattern = "^\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*$";
         PrintWriter out = response.getWriter();
         if(!password.equals(twice)){

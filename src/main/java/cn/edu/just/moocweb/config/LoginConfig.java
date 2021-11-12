@@ -23,6 +23,7 @@ public class LoginConfig implements WebMvcConfigurer {
                 "/login",
                 "/register",
                 "/",
+                "/verify",
                 "/error",
                 "/regPage",
                 "/**/*.js",

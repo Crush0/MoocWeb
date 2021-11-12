@@ -1,100 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>One Page Wonder - Start Bootstrap Template</title>
-<!--        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />-->
-        <!-- Font Awesome icons (free version)-->
-        <script th:src="@{/js/all.js}" crossorigin="anonymous"></script>
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link th:href="@{css/styles.css}" rel="stylesheet" />
-    </head>
-    <body id="page-top">
-        <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
-            <div class="container px-5">
-                <a class="navbar-brand" href="#page-top">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#">Sign Up</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/loginPage">Log In</a></li>
-                    </ul>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <title>用户登录 - 注册</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/jquery.toast.css}">
+    <link rel="stylesheet" th:href="@{/css/all.min.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <script th:src="@{/js/jquery.min.js}"></script>
+    <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/jquery.toast.js}"></script>
+</head>
+<body style="user-select: none">
+    <div class="main" id="main">
+        <div class="form-container sign-up-container">
+            <form onsubmit="return false">
+                <h1>注 册</h1>
+<!--                <div class="social-container">-->
+<!--                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>-->
+<!--                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>-->
+<!--                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
+<!--                </div>-->
+<!--                <span>或使用邮箱注册</span>-->
+                <label>
+                    <input type="text" id="r-u" placeholder="用户名">
+                </label>
+                <label>
+                    <input type="email" id="r-e" placeholder="电子邮箱">
+                </label>
+                <label>
+                    <input type="password" id="e-p" placeholder="密 码">
+                </label>
+                <label>
+                    <input type="password" id="e-t" placeholder="再次输入你的密码">
+                </label>
+                <button onclick="register()">注 册</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form onsubmit="return false">
+                <h1>登 录</h1>
+<!--                <div class="social-container">-->
+<!--                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>-->
+<!--                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>-->
+<!--                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>-->
+<!--                </div>-->
+<!--                <span>或使用您的帐号</span>-->
+                <label>
+                    <input type="text" placeholder="用户名或邮箱" id="l-u">
+                </label>
+                <label>
+                    <input type="password" placeholder="密 码" id="l-p">
+                </label>
+                <div style="display: flex;width: 70%;align-items: baseline;">
+                    <div style="display: inline-flex;align-items: baseline;width: 64%;">
+                        <input style="width: auto;" type="checkbox" id="l-r">
+                        <label for="l-r" style="padding-left: 5px">记住我</label>
+                    </div>
+                    <a href="javascript:void(0)" style="display: inline-flex;">忘记密码？</a>
+                </div>
+                <button onclick="login()">登 录</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>已有帐号？</h1>
+                    <span>请使用您的帐号进行登录</span>
+                    <button class="switcher" id="btnLogin">登 录</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>没有帐号？</h1>
+                    <p>立即注册加入我们，和我们一起开始旅程吧</p>
+                    <button class="switcher" id="btnRegister">注 册</button>
                 </div>
             </div>
-        </nav>
-        <!-- Header-->
-        <header class="masthead text-center text-white">
-            <div class="masthead-content">
-                <div class="container px-5">
-                    <h1 class="masthead-heading mb-0">One Page Wonder</h1>
-                    <h2 class="masthead-subheading mb-0">Will Rock Your Socks Off</h2>
-                    <a class="btn btn-primary btn-xl rounded-pill mt-5" href="#scroll">Learn More</a>
-                </div>
-            </div>
-            <div class="bg-circle-1 bg-circle"></div>
-            <div class="bg-circle-2 bg-circle"></div>
-            <div class="bg-circle-3 bg-circle"></div>
-            <div class="bg-circle-4 bg-circle"></div>
-        </header>
-        <!-- Content section 1-->
-        <section id="scroll">
-            <div class="container px-5">
-                <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="p-5"><img class="img-fluid rounded-circle" th:src="@{/img/01.jpg}" alt="..." /></div>
-                    </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="p-5">
-                            <h2 class="display-4">For those about to rock...</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Content section 2-->
-        <section>
-            <div class="container px-5">
-                <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6">
-                        <div class="p-5"><img class="img-fluid rounded-circle" th:src="@{/img/02.jpg}" alt="..." /></div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="p-5">
-                            <h2 class="display-4">We salute you!</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Content section 3-->
-        <section>
-            <div class="container px-5">
-                <div class="row gx-5 align-items-center">
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="p-5"><img class="img-fluid rounded-circle" th:src="@{/img/03.jpg}" alt="..." /></div>
-                    </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="p-5">
-                            <h2 class="display-4">Let there be rock!</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod aliquid, mollitia odio veniam sit iste esse assumenda amet aperiam exercitationem, ea animi blanditiis recusandae! Ratione voluptatum molestiae adipisci, beatae obcaecati.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-black">
-            <div class="container px-5"><p class="m-0 text-center text-white small">Copyright &copy; Your Website 2021</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script th:src="@{js/scripts.js}"></script>
-    </body>
+        </div>
+    </div>
+</body>
+<script>
+    const container = document.getElementById('main');
+    const btnRegister = document.getElementById('btnRegister');
+    const btnLogin = document.getElementById('btnLogin');
+
+
+    btnRegister.addEventListener('click', function () {
+        container.classList.add('right-panel-active')
+    })
+
+    btnLogin.addEventListener('click', function () {
+        container.classList.remove('right-panel-active')
+    })
+
+    function checkForm(type){
+        switch (type){
+            case 'l':
+                let user = $('#l-u').val()
+                let pwd = $('#l-p').val()
+                if(user===''){
+                    showToast('注意','用户名不能为空','error')
+                    return false
+                }
+                else if(pwd===''){
+                    showToast('注意','密码不能为空','error')
+                    return false
+                }
+                break
+            case 'r':
+                let username = $('#r-u').val()
+                let password = $('#e-p').val()
+                let email = $('#r-e').val()
+                let twice = $('#e-t').val()
+                if(username===''){
+                    showToast('注意','用户名不能为空','error')
+                    return false
+                }
+                else if(password==='' || twice === ''){
+                    showToast('注意','密码不能为空','error')
+                    return false
+                }
+                else if(email===''){
+                    showToast('注意','邮箱不能为空','error')
+                    return false
+                }
+                break
+        }
+        return true
+    }
+
+    function showToast(head,text='',icon='success'){
+        $.toast({
+            heading: head,
+            text: text,
+            showHideTransition: 'slide',
+            icon: icon
+        })
+    }
+
+    function login(){
+        if(checkForm('l')) {
+            let username = $('#l-u').val()
+            let password = $('#l-p').val()
+            let re = $('#l-r').prop('checked')?'on':'off'
+            $.ajax({
+                url:'/login',
+                method: 'post',
+                data:{
+                    'username':username,
+                    'password':password,
+                    'remember':re
+                },
+                complete: function (res){
+                    let json = $.parseJSON(res['responseText'])
+                    if (json.code !== 1000) {
+                        showToast('登录失败', json.message, 'error')
+                    } else {
+                        location.href = json.location
+                    }
+                }
+            })
+        }
+    }
+
+    function register(){
+        if(checkForm('r')) {
+            let username = $('#r-u').val()
+            let password = $('#e-p').val()
+            let email = $('#r-e').val()
+            let twice = $('#e-t').val()
+            $.ajax({
+                url: '/register',
+                method: 'post',
+                data: {
+                    'username': username,
+                    'password': password,
+                    'email': email,
+                    'twice': twice
+                },
+                complete: function (res) {
+                    let json = $.parseJSON(res['responseText'])
+                    if (json.code !== 1000) {
+                        showToast('注册失败', json.message, 'error')
+                    } else {
+                        showToast('注册成功')
+                    }
+                }
+            })
+        }
+    }
+
+</script>
+
 </html>
