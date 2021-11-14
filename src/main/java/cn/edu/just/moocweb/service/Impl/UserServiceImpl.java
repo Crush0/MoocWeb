@@ -32,8 +32,14 @@ public class UserServiceImpl extends BaseService implements UserService {
         return userRepository;
     }
 
-    public User login(String username, String password){
-        User user = userRepository.findUserByUsername(username);
+    public User login(boolean useEmail,String username, String password){
+        User user;
+        if(useEmail){
+            user = userRepository.findUserByEmail(username);
+        }
+        else{
+            user = userRepository.findUserByUsername(username);
+        }
         if(user==null){
             throw new UserException(ErrCode.USER_NOTFOUND,"用户名不存在");
         }
@@ -66,7 +72,7 @@ public class UserServiceImpl extends BaseService implements UserService {
         String verifyCode = UUID.randomUUID() + "-" + UUID.nameUUIDFromBytes(user.getUsername().getBytes(StandardCharsets.UTF_8)).toString();
         redisUtils.set(verifyCode,user.getUuid(),30L, TimeUnit.MINUTES);
         try {
-            new MailSender.Builder("点击链接验证您的邮箱: http://39.96.46.125/verify?code="+verifyCode,user.getEmail()).Subject("MoocWeb--邮箱验证").send();
+            new MailSender.Builder("点击链接验证您的邮箱: http://150.158.169.37/verify?code="+verifyCode,user.getEmail()).Subject("MoocWeb--邮箱验证").send();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -23,14 +23,22 @@ public class MoocUtils {
     private static final String moocLoginURL = "https://www.icourse163.org/member/login.htm#/webLoginIndex";
     private static final ChromeOptions options;
     private static final ChromeDriverService chromeDriverService;
+    private static final boolean isWin = System.getProperty("os.name").toLowerCase().contains("win");
+
+    private static final boolean isLinux = System.getProperty("os.name").toLowerCase().contains("linux");
     static{
-        System.setProperty("webdriver.chrome.driver","E:\\tools\\chromedriver.exe");
+        if(isLinux)
+            System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
+        else if(isWin)
+            System.setProperty("webdriver.chrome.driver","E:\\tools\\chromedriver.exe");
         Logger.getLogger("o.o.selenium.remote.ProtocolHandshake").setLevel(Level.OFF);
         DriverService.Builder<ChromeDriverService, ChromeDriverService.Builder> serviceBuilder = new ChromeDriverService.Builder();
         chromeDriverService = serviceBuilder.build();
         chromeDriverService.sendOutputTo(NullOutputStream.NULL_OUTPUT_STREAM);
         options = new ChromeOptions();
         options.addArguments("blink-settings=imagesEnabled=false");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
         options.setHeadless(true);
     }
     private static String bindMooc(String username, String password, Integer type) {

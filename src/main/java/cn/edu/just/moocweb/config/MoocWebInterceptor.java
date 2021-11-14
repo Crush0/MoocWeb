@@ -73,7 +73,7 @@ public class MoocWebInterceptor implements HandlerInterceptor {
                         String pass = token.substring(token.indexOf('|')+1);
                         User user = userService.getRepository().findUserByUuid(uuid);
                         if(user.getPassword().equals(pass)){
-                            System.out.println("自动登录");
+                            request.getSession().setAttribute("user",user);
                             return user;
                         }
                         return null;

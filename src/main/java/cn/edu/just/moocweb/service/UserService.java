@@ -5,6 +5,6 @@ import cn.edu.just.moocweb.mapper.UserRepository;
 
 public interface UserService {
     UserRepository getRepository();
-    User login(String username, String password);
+    User login(boolean useEmail,String username, String password);
     User register(User user);
 }

@@ -34,7 +34,8 @@ public class LoginConfig implements WebMvcConfigurer {
                 "/**/*.png",
                 "/**/*.ico",
                 "/**/*.svg",
-                "/**/*.map"
+                "/**/*.map",
+                "/robots.txt"
         );
     }
 }
